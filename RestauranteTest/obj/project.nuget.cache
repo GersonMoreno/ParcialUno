@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FOYGhqf4BcgkJHThALKeEbxG4LQmgfr7XL3wLQv1ozL4plkCQe2NYF3y5zfgac091orEBrc2FIHm4Zoz9EgF2Q==",
+  "dgSpecHash": "ICSyuK54VOpK8yz1JNkgDT8cxsdXwYklpsMKYEUArUjO5hHc6z177EXzORinsvx3yTks3nPYxfH557LDp/0f4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\ParcialUno\\Restaurente.test.csproj",
+  "projectFilePath": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\RestauranteTest\\RestauranteTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gerso\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\gerso\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",

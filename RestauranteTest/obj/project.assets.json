@@ -1253,6 +1253,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "DomainRestaurante/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DomainRestaurante.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DomainRestaurante.dll": {}
+        }
       }
     }
   },
@@ -4942,10 +4952,16 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "DomainRestaurante/1.0.0": {
+      "type": "project",
+      "path": "../DomainRestaurante/DomainRestaurante.csproj",
+      "msbuildProject": "../DomainRestaurante/DomainRestaurante.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "DomainRestaurante >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "NUnit >= 3.13.1",
       "NUnit3TestAdapter >= 3.17.0",
@@ -4960,11 +4976,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\ParcialUno\\Restaurente.test.csproj",
-      "projectName": "Restaurente.test",
-      "projectPath": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\ParcialUno\\Restaurente.test.csproj",
+      "projectUniqueName": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\RestauranteTest\\RestauranteTest.csproj",
+      "projectName": "RestauranteTest",
+      "projectPath": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\RestauranteTest\\RestauranteTest.csproj",
       "packagesPath": "C:\\Users\\gerso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\ParcialUno\\obj\\",
+      "outputPath": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\RestauranteTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -4985,7 +5001,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\gerso\\source\\repos\\ParcialUno\\DomainRestaurante\\DomainRestaurante.csproj": {
+              "projectPath": "C:\\Users\\gerso\\source\\repos\\ParcialUno\\DomainRestaurante\\DomainRestaurante.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
