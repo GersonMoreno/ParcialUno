@@ -99,7 +99,7 @@ namespace RestauranteTest
             Se retiro Gaseosa, habían 10 y quedaron 9.
             Se retiro Laminas queso Mozarela, habían 100 y quedaron 98.
             Se retiro Pan de perro, habían 60 y quedaron 59.
-            El costo de la venta $5400 y un precio de $10500 y la utilidad $5100”
+            Combo perro doble: El costo de la venta $5400 y un precio de $10500 y la utilidad $5100”
 
          */
         [Test]
@@ -128,7 +128,7 @@ namespace RestauranteTest
             +"\nSe retiro Gaseosa, habían 10 y quedaron 9."
             + "\nSe retiro Laminas queso Mozarela, habían 100 y quedaron 98."
             + "\nSe retiro Pan de perro, habían 60 y quedaron 59." +
-            "\nEl costo de la venta $5400 y un precio de $10500 y la utilidad $5100”", respuesta);
+            "\nCombo perro doble: El costo de la venta $5400,0 y un precio de $10500,0 y la utilidad $5100,0", respuesta);
         }
     }
 }
