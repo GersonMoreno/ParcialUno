@@ -102,19 +102,30 @@ namespace RestauranteTest
         [Test]
         public void DisminuirCantidadDeProductosCompuestosSalientes()
         {
-            var Gaseosa = new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000);
-            var Salchicha = new Producto(nombre: "Salchicha", cantidad: 40, costo: 1000, precio: 2000, utilidad: 1000);
-            var QuesoMozarela = new Producto(nombre: "laminaQueso Mozarela", cantidad: 100, costo: 700, precio: 1500, utilidad: 800);
-            var PanPerro = new Producto(nombre: "Pan de Perro", cantidad: 60, costo: 1000, precio: 1500, utilidad: 500);
+            List<Producto> Productos = new List<Producto>();
+            Productos.Add(new Producto(nombre: "Salchicha", cantidad: 40, costo: 1000, precio: 2000, utilidad: 1000));
+            Productos.Add(new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000));
+            Productos.Add(new Producto(nombre: "Laminas queso Mozarela", cantidad: 100, costo: 700, precio: 1500, utilidad: 800));
+            Productos.Add(new Producto(nombre: "Pan de perro", cantidad: 60, costo: 1000, precio: 1500, utilidad: 500));
+
+            
+            var Salchicha = new Producto(nombre: "Salchicha", cantidad: 2, costo: 1000, precio: 2000, utilidad: 1000);
+            var Gaseosa = new Producto(nombre: "Gaseosa", cantidad: 1, costo: 1000, precio: 2000, utilidad: 1000);
+            var QuesoMozarela = new Producto(nombre: "Laminas queso Mozarela", cantidad: 2, costo: 700, precio: 1500, utilidad: 800);
+            var PanPerro = new Producto(nombre: "Pan de perro", cantidad: 1, costo: 1000, precio: 1500, utilidad: 500);
             List<Producto> Ingredientes = new List<Producto>();
-            Ingredientes.Add(Gaseosa);
             Ingredientes.Add(Salchicha);
+            Ingredientes.Add(Gaseosa);
             Ingredientes.Add(QuesoMozarela);
             Ingredientes.Add(PanPerro);
 
-            var Restaurante = new Restaurante(Ingredientes: Ingredientes);
-            string respuesta = Restaurante.Vender(cantidadVender: 1);
-            Assert.AreEqual("La cantidad de Gaseosa restante es de 8", respuesta);
+            var Restaurante = new Restaurante(productos: Productos);
+            string respuesta = Restaurante.Vender(Ingredientes);
+            Assert.AreEqual("Se retiro Salchicha, habían 40 y quedaron 38."
+            +"\nSe retiro Gaseosa, habían 10 y quedaron 9."
+            + "\nSe retiro Laminas queso Mozarela, habían 100 y quedaron 98."
+            + "\nSe retiro Pan de perro, habían 60 y quedaron 59." +
+            "\n", respuesta);
         }
     }
 }
