@@ -23,7 +23,8 @@ namespace DomainRestaurante
             {
                 return "La entrada del producto es incorrecta";
             }
-            return "";
+            Cantidad += cantidadEntrada;
+            return $"La cantidad del {Nombre} aumento y es de {Cantidad}";
         }
     }
 }
