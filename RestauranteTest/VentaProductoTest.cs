@@ -60,11 +60,16 @@ namespace RestauranteTest
         [Test]
         public void SalidaDeProductoDeMenosUno()
         {
-            var Producto = new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000);
+            
+            List<Producto> productos = new List<Producto>();
+            productos.Add(new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000));
+            var gaseosa = new Producto(nombre: "Gaseosa", cantidad: -1, costo: 1000, precio: 2000, utilidad: 1000);
+            List<Producto> ingredientes = new List<Producto>();
+            ingredientes.Add(gaseosa);
+            var Restaurante = new Restaurante(productos);
+            string respuesta = Restaurante.Vender(ingredientes, "Gaseosa");
 
-            string respuesta = Producto.Salida(cantidadSalida: -1);
-
-            Assert.AreEqual("La cantidad de salida es incorrecta", respuesta);
+            Assert.AreEqual("La cantidad de salida del producto Gaseosa es incorrecta", respuesta);
         }
         /*
          Disminuir cantidad de productos salientes
@@ -78,11 +83,16 @@ namespace RestauranteTest
         [Test]
         public void DisminuirCantidadDeProductosSalientes()
         {
-            var Producto = new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000);
+            List<Producto> productos = new List<Producto>();
+            productos.Add(new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000));
+            var gaseosa = new Producto(nombre: "Gaseosa", cantidad: 2, costo: 1000, precio: 2000, utilidad: 1000);
+            List<Producto> ingredientes = new List<Producto>();
+            ingredientes.Add(gaseosa);
+            var Restaurante = new Restaurante(productos);
+            string respuesta = Restaurante.Vender(ingredientes, "Gaseosa");
 
-            string respuesta = Producto.Salida(cantidadSalida: 2);
-
-            Assert.AreEqual("La cantidad de Gaseosa restante es de 8", respuesta);
+            Assert.AreEqual("Se retiro Gaseosa, habían 10 y quedaron 8."+
+"\nGaseosa: El costo de la venta $2000,0 y un precio de $4000,0 y la utilidad $2000,0", respuesta);
         }
         /*
             Disminuir cantidad de productos compuestos salientes y guardar la venta
@@ -123,12 +133,26 @@ namespace RestauranteTest
             Ingredientes.Add(PanPerro);
 
             var Restaurante = new Restaurante(productos: Productos);
-            string respuesta = Restaurante.Vender(Ingredientes);
+            string respuesta = Restaurante.Vender(Ingredientes, "Combo perro doble");
             Assert.AreEqual("Se retiro Salchicha, habían 40 y quedaron 38."
             +"\nSe retiro Gaseosa, habían 10 y quedaron 9."
             + "\nSe retiro Laminas queso Mozarela, habían 100 y quedaron 98."
             + "\nSe retiro Pan de perro, habían 60 y quedaron 59." +
             "\nCombo perro doble: El costo de la venta $5400,0 y un precio de $10500,0 y la utilidad $5100,0", respuesta);
+        }
+
+        [Test]
+        public void SalidaDeOnceProductos()
+        {
+            List<Producto> productos = new List<Producto>();
+            productos.Add(new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000));
+            var gaseosa = new Producto(nombre: "Gaseosa", cantidad: 11, costo: 1000, precio: 2000, utilidad: 1000);
+            List<Producto> ingredientes = new List<Producto>();
+            ingredientes.Add(gaseosa);
+            var Restaurante = new Restaurante(productos);
+            string respuesta = Restaurante.Vender(ingredientes, "Gaseosa");
+
+            Assert.AreEqual("La cantidad de salida del producto Gaseosa es incorrecta", respuesta);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DomainRestaurante
             Ventas = new List<Venta>();
         }
 
-        public string Vender(List<Producto> ingredientes)
+        public string Vender(List<Producto> ingredientes,string nombre)
         {
             decimal costoTotal = 0.0m;
             decimal precioTotal = 0.0m;
@@ -28,14 +28,24 @@ namespace DomainRestaurante
                 {
                     if (ingrediente.Nombre.Equals(producto.Nombre))
                     {
-                        respuesta += producto.Salida(ingrediente.Cantidad) + "\n";
-                        costoTotal += producto.Costo*ingrediente.Cantidad;
-                        precioTotal += producto.Precio*ingrediente.Cantidad;
-                        utilidadTotal += producto.Utilidad* ingrediente.Cantidad;
+                        string respuestaSalida = producto.Salida(ingrediente.Cantidad);
+                        if (!respuestaSalida.Equals($"La cantidad de salida del producto {producto.Nombre} es incorrecta"))
+                        {
+                            respuesta += respuestaSalida + "\n";
+                            costoTotal += producto.Costo * ingrediente.Cantidad;
+                            precioTotal += producto.Precio * ingrediente.Cantidad;
+                            utilidadTotal += producto.Utilidad * ingrediente.Cantidad;
+                        }
+                        else
+                        {
+                            respuesta = respuestaSalida;
+                            return respuesta;
+                            
+                        }
                     }
                 }
             }
-            var venta = new Venta(nombre: "Combo perro doble",costo: costoTotal,precio:precioTotal,utilidad:utilidadTotal,fecha:new DateTime(2021,01,21));
+            var venta = new Venta(nombre: nombre, costo: costoTotal,precio:precioTotal,utilidad:utilidadTotal,fecha:new DateTime(2021,01,21));
             Ventas.Add(venta);
             respuesta = respuesta+ venta.Nombre + $": El costo de la venta ${venta.Costo} y un precio de ${venta.Precio} y la utilidad ${venta.Utilidad}";
             return respuesta;

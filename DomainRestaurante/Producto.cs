@@ -28,9 +28,9 @@ namespace DomainRestaurante
         }
         public string Salida(int cantidadSalida)
         {
-            if (cantidadSalida <= 0)
+            if (cantidadSalida <= 0 || (Cantidad-cantidadSalida)<0)
             {
-                return "La cantidad de salida es incorrecta";
+                return $"La cantidad de salida del producto {Nombre} es incorrecta";
             }
             var cantidadInicial = Cantidad;
             Cantidad -= cantidadSalida;
