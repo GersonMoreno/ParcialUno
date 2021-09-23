@@ -32,7 +32,8 @@ namespace DomainRestaurante
             {
                 return "La cantidad de salida es incorrecta";
             }
-            return "";
+            Cantidad -= cantidadSalida;
+            return $"La cantidad de {Nombre} restante es de {Cantidad}";
         }
     }
 }
