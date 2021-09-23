@@ -59,5 +59,21 @@ namespace RestauranteTest
             string respuesta = Producto.Salida(cantidadSalida: -1);
             Assert.AreEqual("La cantidad de salida es incorrecta", respuesta);
         }
+        /*
+         Disminuir cantidad de productos salientes
+        H2: COMO USUARIO QUIERO REGISTRAR LA SALIDA PRODUCTOS
+        Criterio de aceptación:
+        2.2. En caso de un producto sencillo la cantidad de la salida se le disminuirá a la cantidad existente del producto.
+        Dado	En el restaurante hay producto nombre: “Gaseosa”, cantidad: 10, costo: 1000, precio: 2000, utilidad:1000
+        Cuando	Se retira producto de 2
+        Entonces	El sistema arrojara un mensaje “La cantidad de Gaseosa restante es de 8”
+         */
+        [Test]
+        public void DisminuirCantidadDeProductosSalientes()
+        {
+            var Producto = new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000);
+            string respuesta = Producto.Salida(cantidadSalida: 2);
+            Assert.AreEqual("La cantidad de Gaseosa restante es de 8", respuesta);
+        }
     }
 }
