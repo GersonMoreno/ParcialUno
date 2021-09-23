@@ -85,10 +85,11 @@ namespace RestauranteTest
             Assert.AreEqual("La cantidad de Gaseosa restante es de 8", respuesta);
         }
         /*
-            Disminuir cantidad de productos compuestos salientes
+            Disminuir cantidad de productos compuestos salientes y guardar la venta
             H2: COMO USUARIO QUIERO REGISTRAR LA SALIDA PRODUCTOS
             Criterio de aceptación:
             2.3. En caso de un producto compuesto la cantidad de la salida se le disminuirá a la cantidad existente de cada uno de su ingrediente
+            2. 4. Cada salida debe registrar el costo del producto y el precio de la venta
             Dado	En el restaurante quiere hacer un combo perro doble y tiene productos: nombre: “Gaseosa”, cantidad: 10, costo: 1000, precio: 2000, utilidad:1000
             “Salchicha”, cantidad: 40, costo: 1000, precio: 2000, utilidad:1000
             “Laminas queso Mozarela”, cantidad: 100, costo: 700, precio: 1500, utilidad: 800
@@ -97,10 +98,12 @@ namespace RestauranteTest
             Entonces	El sistema arrojara un mensaje “Se retiro Salchicha, habían 40 y quedaron 38.
             Se retiro Gaseosa, habían 10 y quedaron 9.
             Se retiro Laminas queso Mozarela, habían 100 y quedaron 98.
-            Se retiro Pan de perro, habían 60 y quedaron 59. ”
+            Se retiro Pan de perro, habían 60 y quedaron 59.
+            El costo de la venta $5400 y un precio de $10500 y la utilidad $5100”
+
          */
         [Test]
-        public void DisminuirCantidadDeProductosCompuestosSalientes()
+        public void DisminuirCantidadDeProductosCompuestosSalientesGuardarLaVenta()
         {
             List<Producto> Productos = new List<Producto>();
             Productos.Add(new Producto(nombre: "Salchicha", cantidad: 40, costo: 1000, precio: 2000, utilidad: 1000));
@@ -125,7 +128,7 @@ namespace RestauranteTest
             +"\nSe retiro Gaseosa, habían 10 y quedaron 9."
             + "\nSe retiro Laminas queso Mozarela, habían 100 y quedaron 98."
             + "\nSe retiro Pan de perro, habían 60 y quedaron 59." +
-            "\n", respuesta);
+            "\nEl costo de la venta $5400 y un precio de $10500 y la utilidad $5100”", respuesta);
         }
     }
 }
