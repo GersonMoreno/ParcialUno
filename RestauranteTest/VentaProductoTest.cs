@@ -56,7 +56,7 @@ namespace RestauranteTest
         public void SalidaDeProductoDeMenosUno()
         {
             var Producto = new Producto(nombre: "Gaseosa", cantidad: 10, costo: 1000, precio: 2000, utilidad: 1000);
-            string respuesta = Producto.Salida(cantidadEntrada: -1);
+            string respuesta = Producto.Salida(cantidadSalida: -1);
             Assert.AreEqual("La cantidad de salida es incorrecta", respuesta);
         }
     }

@@ -26,6 +26,13 @@ namespace DomainRestaurante
             Cantidad += cantidadEntrada;
             return $"La cantidad del {Nombre} aumento y es de {Cantidad}";
         }
-
+        public string Salida(int cantidadSalida)
+        {
+            if (cantidadSalida <= 0)
+            {
+                return "La cantidad de salida es incorrecta";
+            }
+            return "";
+        }
     }
 }
