@@ -4,13 +4,15 @@ namespace DomainRestaurante
 {
     public class Producto
     {
+        public int Id { get; private set; }
         public string Nombre { get; private set; }
         public int Cantidad { get; private set; }
         public decimal Costo { get; private set; }
         public decimal Precio { get; private set; }
         public decimal Utilidad { get; private set; }
-        public Producto(string nombre,int cantidad,decimal costo,decimal precio,decimal utilidad)
+        public Producto(int id, string nombre,int cantidad,decimal costo,decimal precio,decimal utilidad)
         {
+            Id = id;
             Nombre = nombre;
             Cantidad = cantidad;
             Costo = costo;
@@ -34,7 +36,7 @@ namespace DomainRestaurante
             }
             var cantidadInicial = Cantidad;
             Cantidad -= cantidadSalida;
-            return $"Se retiro {Nombre}, habían {cantidadInicial} y quedaron {Cantidad}.";
+            return $"Exito";
         }
     }
 }

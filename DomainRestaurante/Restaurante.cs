@@ -16,31 +16,33 @@ namespace DomainRestaurante
             Ventas = new List<Venta>();
         }
 
-        public string Vender(List<Producto> ingredientes,string nombre)
+        public string Vender(List<Ingrediente> ingredientes,string nombre,int cantidadAVender)
         {
             decimal costoTotal = 0.0m;
             decimal precioTotal = 0.0m;
             decimal utilidadTotal = 0.0m;
             string respuesta = string.Empty ;
-            foreach (var ingrediente in ingredientes)
+            for (int i = 0; i < cantidadAVender; i++)
             {
-                foreach (var producto in Productos)
+                foreach (var ingrediente in ingredientes)
                 {
-                    if (ingrediente.Nombre.Equals(producto.Nombre))
+                    foreach (var producto in Productos)
                     {
-                        string respuestaSalida = producto.Salida(ingrediente.Cantidad);
-                        if (!respuestaSalida.Equals($"La cantidad de salida del producto {producto.Nombre} es incorrecta"))
+                        if (ingrediente.Producto.Id==producto.Id)
                         {
-                            respuesta += respuestaSalida + "\n";
-                            costoTotal += producto.Costo * ingrediente.Cantidad;
-                            precioTotal += producto.Precio * ingrediente.Cantidad;
-                            utilidadTotal += producto.Utilidad * ingrediente.Cantidad;
-                        }
-                        else
-                        {
-                            respuesta = respuestaSalida;
-                            return respuesta;
-                            
+                            string respuestaSalida = producto.Salida(ingrediente.CantidadRetirar);
+                            if (respuestaSalida.Equals($"Exito"))
+                            {
+                                costoTotal += producto.Costo * ingrediente.CantidadRetirar;
+                                precioTotal += producto.Precio * ingrediente.CantidadRetirar;
+                                utilidadTotal += producto.Utilidad * ingrediente.CantidadRetirar;
+                            }
+                            else
+                            {
+                                respuesta = respuestaSalida;
+                                return respuesta;
+
+                            }
                         }
                     }
                 }
@@ -49,7 +51,6 @@ namespace DomainRestaurante
             Ventas.Add(venta);
             respuesta = respuesta+ venta.Nombre + $": El costo de la venta ${venta.Costo} y un precio de ${venta.Precio} y la utilidad ${venta.Utilidad}";
             return respuesta;
-            
         }
         
     }
